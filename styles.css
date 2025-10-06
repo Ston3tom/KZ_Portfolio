@@ -952,4 +952,57 @@ section {
     height: auto;
     object-fit: cover;
 }
-/* ------------------------------------------------------------------- */ 
+/* ------------------------------------------------------------------- */
+
+/* Safari and mobile-specific video improvements */
+@media (max-width: 768px) {
+    .video-thumbnail,
+    .product-thumbnail {
+        /* Ensure videos are touch-friendly on mobile */
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        
+        /* Improve video rendering on mobile */
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        
+        /* Force Safari to render video thumbnails */
+        -webkit-playsinline: true;
+        background-color: #000;
+    }
+    
+    /* Make video controls more touch-friendly */
+    video::-webkit-media-controls {
+        overflow: visible !important;
+    }
+    
+    video::-webkit-media-controls-panel {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+    
+    /* Safari-specific fixes */
+    video::-webkit-media-controls-play-button {
+        display: block !important;
+    }
+}
+
+/* Safari-specific video fixes */
+video {
+    /* Force Safari to show thumbnails */
+    -webkit-playsinline: true;
+    background-color: #000;
+}
+
+/* Additional Safari thumbnail fixes */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    video {
+        background-color: #000;
+        -webkit-transform: translateZ(0);
+    }
+} 
