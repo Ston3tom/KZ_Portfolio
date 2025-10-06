@@ -1003,3 +1003,32 @@ section {
     object-fit: cover;
 }
 /* ------------------------------------------------------------------- */
+
+/* Fullscreen video styling - maintain phone frame appearance */
+video:fullscreen {
+    object-fit: contain !important;
+    background-color: white !important;
+    width: 100vw !important;
+    height: 100vh !important;
+}
+
+video:-webkit-full-screen {
+    object-fit: contain !important;
+    background-color: white !important;
+    width: 100vw !important;
+    height: 100vh !important;
+}
+
+video:-moz-full-screen {
+    object-fit: contain !important;
+    background-color: white !important;
+    width: 100vw !important;
+    height: 100vh !important;
+}
+
+video:-ms-fullscreen {
+    object-fit: contain !important;
+    background-color: white !important;
+    width: 100vw !important;
+    height: 100vh !important;
+}
