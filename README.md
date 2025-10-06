@@ -4,7 +4,7 @@ A modern, responsive portfolio website showcasing fitness content, training vide
 
 ## 🌟 Live Website
 
-Visit the live website: [https://Ston3tom.github.io/kristyna-portfolio]
+Visit the live website: [https://Ston3tom.github.io/KZ_Portfolio]
 
 ## 📋 About
 
