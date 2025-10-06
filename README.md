@@ -37,17 +37,23 @@ This portfolio website features:
 
 ```
 portfolio/
-├── index.html          # Main HTML file
-├── styles.css          # CSS stylesheet
-├── script.js           # JavaScript functionality
-├── profile_picture.jpg # Profile photo
-├── training.mp4        # Training session video
-├── day_of_life.mp4     # Lifestyle content video
-├── legday_highlight.mp4 # Leg day highlights
-├── legday_tutorial.mp4  # Exercise tutorial
-├── line_opening.mp4     # Product unboxing
-├── opalovak.mp4         # Product testing
-└── README.md           # This file
+├── index.html              # Main HTML file
+├── styles.css              # CSS stylesheet
+├── script.js               # JavaScript functionality
+├── profile_picture.jpg     # Profile photo
+├── training.mp4            # Training session video
+├── training_thumb.jpg      # Training video thumbnail
+├── day_of_life.mp4         # Lifestyle content video
+├── day_of_life_thumb.jpg   # Day of life video thumbnail
+├── legday_highlight.mp4    # Leg day highlights
+├── legday_highlight_thumb.jpg # Leg day highlights thumbnail
+├── legday_tutorial.mp4     # Exercise tutorial
+├── legday_tutorial_thumb.jpg # Leg day tutorial thumbnail
+├── line_opening.mp4        # Product unboxing
+├── line_opening_thumb.jpg  # Product opening thumbnail
+├── opalovak.mp4            # Product testing
+├── opalovak_thumb.jpg      # Product testing thumbnail
+└── README.md               # This file
 ```
 
 ## 🚀 Getting Started
