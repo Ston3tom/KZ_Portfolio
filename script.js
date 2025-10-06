@@ -124,41 +124,6 @@ window.addEventListener('load', () => {
         const originalText = heroTitle.textContent;
         typeWriter(heroTitle, originalText, 150);
     }
-    
-    // Force thumbnail generation for Safari and Opera
-    const videos = document.querySelectorAll('video');
-    videos.forEach(video => {
-        // Force Safari to load video metadata and generate thumbnails
-        video.addEventListener('loadedmetadata', function() {
-            // Try to seek to 1 second to generate thumbnail
-            this.currentTime = 1;
-            setTimeout(() => {
-                this.currentTime = 0;
-            }, 100);
-        });
-        
-        // Enable sound when user interacts with video
-        video.addEventListener('play', function() {
-            this.muted = false;
-            this.volume = 0.2;
-        });
-        
-        // Handle mobile video interactions
-        video.addEventListener('click', function() {
-            if (this.paused) {
-                this.play();
-            } else {
-                this.pause();
-            }
-        });
-        
-        // Ensure videos are muted by default for mobile compatibility
-        video.muted = true;
-        video.volume = 0.2;
-        
-        // Force load for Safari
-        video.load();
-    });
 });
 
 // Add loading animation
