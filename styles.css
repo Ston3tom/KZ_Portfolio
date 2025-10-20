@@ -44,7 +44,7 @@ body {
 }
 
 .nav-logo a {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 700;
     color: #8B4513;
     text-decoration: none;
@@ -642,6 +642,10 @@ section {
 
     .section-title {
         font-size: 2rem;
+    }
+    
+    .nav-logo a {
+        font-size: 1rem;
     }
 }
 
