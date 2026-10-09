@@ -1,0 +1,157 @@
+---
+import { nav, site, withBase } from '../data/site';
+---
+
+<header id="site-header" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4 md:px-8">
+    <a
+      href={withBase('#home')}
+      id="brand-link"
+      class="font-display text-lg font-bold tracking-tight text-paper transition-colors hover:text-pink md:text-xl"
+      aria-label={`${site.name} — home`}
+    >
+      {site.shortName}
+      <span class="sr-only">{site.name}</span>
+    </a>
+
+    <nav class="hidden items-center gap-7 md:flex" aria-label="Primary">
+      {
+        nav.map((item) => (
+          <a
+            href={item.href}
+            class="nav-link text-[0.8125rem] font-medium tracking-wide text-paper/75 transition-colors hover:text-paper"
+            data-section={item.href.slice(1)}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <a
+        id="nav-cta"
+        href="#contact"
+        class="rounded-md bg-pink px-4 py-2 text-[0.8125rem] font-semibold tracking-wide text-paper transition-colors hover:bg-pink-deep"
+      >
+        Work with me
+      </a>
+    </nav>
+
+    <button
+      id="menu-toggle"
+      type="button"
+      class="inline-flex h-11 w-11 items-center justify-center rounded-md border border-paper/25 bg-ink/30 text-paper backdrop-blur md:hidden"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      aria-label="Open menu"
+    >
+      <span class="menu-icon flex w-5 flex-col gap-1.5" aria-hidden="true">
+        <span class="bar h-0.5 w-full bg-current transition"></span>
+        <span class="bar h-0.5 w-full bg-current transition"></span>
+        <span class="bar h-0.5 w-full bg-current transition"></span>
+      </span>
+    </button>
+  </div>
+
+  <div
+    id="mobile-menu"
+    class="hidden border-t border-ink/8 bg-paper/95 px-5 py-6 backdrop-blur-xl md:hidden"
+  >
+    <nav class="flex flex-col gap-4" aria-label="Mobile">
+      {
+        nav.map((item) => (
+          <a href={item.href} class="mobile-link text-lg font-medium text-ink">
+            {item.label}
+          </a>
+        ))
+      }
+      <a
+        href="#contact"
+        class="btn-ink mt-2 w-fit"
+      >
+        Work with me
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('site-header');
+  const brand = document.getElementById('brand-link');
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const links = document.querySelectorAll('.nav-link');
+  const cta = document.getElementById('nav-cta');
+
+  function setScrolled(scrolled) {
+    if (!header) return;
+
+    header.classList.toggle('bg-paper/92', scrolled);
+    header.classList.toggle('backdrop-blur-xl', scrolled);
+    header.classList.toggle('border-b', scrolled);
+    header.classList.toggle('border-ink/6', scrolled);
+
+    brand?.classList.toggle('text-paper', !scrolled);
+    brand?.classList.toggle('text-ink', scrolled);
+
+    toggle?.classList.toggle('border-paper/25', !scrolled);
+    toggle?.classList.toggle('bg-ink/30', !scrolled);
+    toggle?.classList.toggle('text-paper', !scrolled);
+    toggle?.classList.toggle('border-ink/10', scrolled);
+    toggle?.classList.toggle('bg-paper/80', scrolled);
+    toggle?.classList.toggle('text-ink', scrolled);
+
+    cta?.classList.toggle('bg-pink', !scrolled);
+    cta?.classList.toggle('hover:bg-pink-deep', !scrolled);
+    cta?.classList.toggle('bg-ink', scrolled);
+    cta?.classList.toggle('hover:bg-ink-soft', scrolled);
+  }
+
+  function onScroll() {
+    const scrolled = window.scrollY > 48;
+    setScrolled(scrolled);
+
+    const sections = document.querySelectorAll('section[id]');
+    let current = '';
+    sections.forEach((section) => {
+      const el = section;
+      if (window.scrollY >= el.offsetTop - 160) {
+        current = el.id;
+      }
+    });
+
+    links.forEach((link) => {
+      const id = link.getAttribute('data-section');
+      const active = id === current && current !== 'home';
+      link.classList.toggle('text-pink', active);
+
+      if (active) {
+        link.classList.remove('text-paper/75', 'text-ink-muted', 'hover:text-paper', 'hover:text-ink');
+        return;
+      }
+
+      if (scrolled) {
+        link.classList.remove('text-paper/75', 'hover:text-paper');
+        link.classList.add('text-ink-muted', 'hover:text-ink');
+      } else {
+        link.classList.remove('text-ink-muted', 'hover:text-ink');
+        link.classList.add('text-paper/75', 'hover:text-paper');
+      }
+    });
+  }
+
+  toggle?.addEventListener('click', () => {
+    const open = menu?.classList.toggle('hidden') === false;
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+
+  document.querySelectorAll('#mobile-menu a').forEach((link) => {
+    link.addEventListener('click', () => {
+      menu?.classList.add('hidden');
+      toggle?.setAttribute('aria-expanded', 'false');
+      toggle?.setAttribute('aria-label', 'Open menu');
+    });
+  });
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+</script>

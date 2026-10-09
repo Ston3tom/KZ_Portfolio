@@ -1,0 +1,85 @@
+---
+import { audience } from '../data/site';
+
+const primaryGender = audience.gender[0];
+const primaryAge = audience.age[0];
+---
+
+<section id="audience" class="relative py-24 md:py-32" aria-labelledby="audience-title">
+  <div class="mx-auto max-w-6xl px-5 md:px-8">
+    <div class="max-w-2xl">
+      <p class="reveal section-label text-olive">Audience</p>
+      <h2 id="audience-title" class="reveal reveal-delay-1 section-title mt-4 text-4xl text-ink md:text-5xl">
+        Who watches
+      </h2>
+      <p class="reveal reveal-delay-2 mt-5 text-base leading-relaxed text-ink-muted md:text-lg">
+        A young, fitness-forward audience — useful context for brand fit and campaign planning.
+      </p>
+    </div>
+
+    <div class="reveal reveal-delay-3 mt-12 grid gap-6 sm:grid-cols-2">
+      <div class="border-l-2 border-pink pl-6">
+        <p class="font-display text-5xl font-bold tracking-tight text-ink md:text-6xl">
+          {primaryGender.value}%
+        </p>
+        <p class="mt-2 text-sm font-medium text-ink-muted">
+          {primaryGender.label} · core gender mix
+        </p>
+      </div>
+      <div class="border-l-2 border-olive pl-6">
+        <p class="font-display text-5xl font-bold tracking-tight text-ink md:text-6xl">
+          {primaryAge.value}%
+        </p>
+        <p class="mt-2 text-sm font-medium text-ink-muted">
+          Ages {primaryAge.label} · largest age group
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-16 grid gap-14 border-t border-ink/10 pt-12 lg:grid-cols-2 lg:gap-20">
+      <div class="reveal">
+        <h3 class="font-display text-lg font-semibold tracking-tight text-ink">Gender mix</h3>
+        <ul class="mt-8 space-y-6" role="list">
+          {
+            audience.gender.map((item) => (
+              <li>
+                <div class="mb-2.5 flex items-baseline justify-between gap-3">
+                  <span class="text-sm font-medium text-ink">{item.label}</span>
+                  <span class="font-display text-sm font-bold tabular-nums text-ink">{item.value}%</span>
+                </div>
+                <div class="h-1.5 overflow-hidden bg-mist" role="presentation">
+                  <div
+                    class="stat-fill h-full bg-olive-deep"
+                    style={`width: ${item.value}%`}
+                  />
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="reveal reveal-delay-1">
+        <h3 class="font-display text-lg font-semibold tracking-tight text-ink">Age ranges</h3>
+        <ul class="mt-8 space-y-5" role="list">
+          {
+            audience.age.map((item) => (
+              <li>
+                <div class="mb-2.5 flex items-baseline justify-between gap-3">
+                  <span class="text-sm font-medium text-ink">{item.label}</span>
+                  <span class="font-display text-sm font-bold tabular-nums text-ink">{item.value}%</span>
+                </div>
+                <div class="h-1.5 overflow-hidden bg-mist" role="presentation">
+                  <div
+                    class="stat-fill h-full bg-pink"
+                    style={`width: ${item.value}%`}
+                  />
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,24 @@
+---
+import VideoGallery from './VideoGallery';
+import { partnershipVideos, withBase } from '../data/site';
+---
+
+<section id="partnerships" class="relative overflow-hidden py-24 md:py-32" aria-labelledby="partnerships-title">
+  <div class="dark-band absolute inset-0 text-paper" aria-hidden="true"></div>
+
+  <div class="relative mx-auto max-w-6xl px-5 md:px-8">
+    <div class="max-w-2xl">
+      <p class="reveal section-label text-pink">Partnerships</p>
+      <h2 id="partnerships-title" class="reveal reveal-delay-1 section-title mt-4 text-4xl text-paper md:text-5xl">
+        Built for brand collaborations
+      </h2>
+      <p class="reveal reveal-delay-2 mt-5 text-base leading-relaxed text-paper/65 md:text-lg">
+        Product reveals and reviews that stay on-brand — clear storytelling, natural delivery, and formats ready for social.
+      </p>
+    </div>
+
+    <div class="mx-auto mt-14 max-w-3xl">
+      <VideoGallery client:visible items={partnershipVideos} baseUrl={withBase('')} columns={2} onDark />
+    </div>
+  </div>
+</section>

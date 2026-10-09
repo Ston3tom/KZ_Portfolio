@@ -1,0 +1,22 @@
+---
+import VideoGallery from './VideoGallery';
+import { contentVideos, withBase } from '../data/site';
+---
+
+<section id="content" class="relative border-y border-ink/6 bg-paper-warm/60 py-24 md:py-32" aria-labelledby="content-title">
+  <div class="mx-auto max-w-6xl px-5 md:px-8">
+    <div class="max-w-2xl">
+      <p class="reveal section-label text-olive">Content</p>
+      <h2 id="content-title" class="reveal reveal-delay-1 section-title mt-4 text-4xl text-ink md:text-5xl">
+        Training & lifestyle on camera
+      </h2>
+      <p class="reveal reveal-delay-2 mt-5 text-base leading-relaxed text-ink-muted md:text-lg">
+        Vertical-first content made for social — workouts, tutorials, and day-in-the-life moments.
+      </p>
+    </div>
+
+    <div class="mt-14">
+      <VideoGallery client:visible items={contentVideos} baseUrl={withBase('')} />
+    </div>
+  </div>
+</section>

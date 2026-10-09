@@ -1,0 +1,59 @@
+---
+import { site } from '../data/site';
+---
+
+<section id="contact" class="relative overflow-hidden py-24 md:py-32" aria-labelledby="contact-title">
+  <div class="contact-band absolute inset-0" aria-hidden="true"></div>
+
+  <div class="relative mx-auto max-w-6xl px-5 text-paper md:px-8">
+    <div class="grid gap-14 lg:grid-cols-[1.25fr_0.75fr] lg:items-end lg:gap-16">
+      <div>
+        <p class="reveal section-label text-pink">Contact</p>
+        <h2 id="contact-title" class="reveal reveal-delay-1 section-title mt-4 text-4xl md:text-5xl lg:text-[3.5rem]">
+          Let’s build something worth watching
+        </h2>
+        <p class="reveal reveal-delay-2 mt-6 max-w-xl text-base leading-relaxed text-paper/65 md:text-lg">
+          Open to brand partnerships, content collaborations, and campaigns that fit fitness, travel, and lifestyle.
+        </p>
+        <div class="reveal reveal-delay-3 mt-10 flex flex-wrap gap-3">
+          <a href={`mailto:${site.email}`} class="btn-primary">
+            Email me
+          </a>
+          <a
+            href={site.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-secondary"
+          >
+            Instagram {site.instagramHandle}
+          </a>
+        </div>
+      </div>
+
+      <ul class="reveal space-y-7 border-t border-paper/12 pt-10 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-12">
+        <li>
+          <p class="text-[0.6875rem] font-bold uppercase tracking-[0.2em] text-paper/40">Email</p>
+          <a
+            class="mt-2 inline-block break-all text-lg font-medium text-paper transition-colors hover:text-pink md:text-xl"
+            href={`mailto:${site.email}`}
+          >
+            {site.email}
+          </a>
+        </li>
+        <li>
+          <p class="text-[0.6875rem] font-bold uppercase tracking-[0.2em] text-paper/40">Phone</p>
+          <a
+            class="mt-2 inline-block text-lg font-medium text-paper transition-colors hover:text-pink md:text-xl"
+            href={`tel:${site.phone}`}
+          >
+            {site.phoneDisplay}
+          </a>
+        </li>
+        <li>
+          <p class="text-[0.6875rem] font-bold uppercase tracking-[0.2em] text-paper/40">Based in</p>
+          <p class="mt-2 text-lg font-medium text-paper md:text-xl">{site.location}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
